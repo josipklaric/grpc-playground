@@ -1,19 +1,21 @@
-﻿using Grpc.Net.Client;
+﻿using System;
+using System.Threading.Tasks;
+using Grpc.Net.Client;
 using GrpcUsersService;
-using System;
 
 namespace GrpcUsersClient
 {
     class Program
     {
-        static async System.Threading.Tasks.Task Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("gRPC Greet client");
 
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
+
             var client = new Greeter.GreeterClient(channel);
 
-            Console.WriteLine($"Sending request to SayHallo method of Greet service ...");
+            Console.WriteLine($"Sending request to Greet service ...");
             
             try
             {
